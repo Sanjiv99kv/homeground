@@ -1,0 +1,177 @@
+// CDN image URLs
+export const IMAGES = {
+  paulPortrait: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_portrait_07cdb9d9.jpg",
+  paulIpl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_ipl_action_31682a5c.jpg",
+  paulCoaching: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_coaching_0176bbd9.jpg",
+  turfNight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/turf_night_5526d0e2.jpg",
+  turfFacility: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_turf_facility_3990d30d.jpg",
+};
+
+// WhatsApp number is configurable via VITE_WHATSAPP_NUMBER env variable
+// Leave blank to hide WhatsApp buttons, or set to a number like "919082210021"
+export const WHATSAPP_NUMBER = (import.meta as any).env?.VITE_WHATSAPP_NUMBER || "";
+export const WHATSAPP_URL = WHATSAPP_NUMBER
+  ? `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20HomeGround!%20I%27d%20like%20to%20know%20more%20about%20your%20services.`
+  : "";
+
+export const FOUNDERS = [
+  {
+    name: "Paul Valthaty",
+    role: "Head Coach & Co-Founder",
+    image: IMAGES.paulPortrait,
+    bio: "Former IPL cricketer who played for Kings XI Punjab. Scored a century against CSK in IPL 2011 — the first by a Punjab player. With 36 First-Class matches and 1,400+ runs, Paul now channels his elite experience into coaching the next generation at HomeGround Cricket Academy.",
+    highlights: ["IPL Century vs CSK (2011)", "36 First-Class Matches", "1,400+ Runs", "Kings XI Punjab"],
+  },
+  {
+    name: "Sparsh Tangri",
+    role: "Co-Founder & Operations Head",
+    image: null,
+    bio: "The operational backbone of HomeGround. Sparsh manages the day-to-day running of the turf facilities, ensuring every booking runs smoothly and every player has a premium experience. His vision of making sports accessible to all drives the business forward.",
+    highlights: ["Operations Strategy", "Business Development", "Customer Experience"],
+  },
+  {
+    name: "Archana Tangri",
+    role: "Co-Founder & Business Director",
+    image: null,
+    bio: "Archana brings strong business acumen to HomeGround. She oversees financial planning, partnerships, and the expansion strategy that has made HomeGround a trusted name in Kandivali's sports community.",
+    highlights: ["Financial Planning", "Strategic Partnerships", "Growth Strategy"],
+  },
+  {
+    name: "Rahul",
+    role: "Co-Founder & Tech Lead",
+    image: null,
+    bio: "Rahul drives the technology and digital presence of HomeGround. From the booking platform to social media, he ensures HomeGround stays ahead of the curve in the digital sports space.",
+    highlights: ["Technology", "Digital Strategy", "Platform Development"],
+  },
+];
+
+export const SPORTS = [
+  {
+    id: "cricket",
+    name: "Cricket",
+    icon: "🏏",
+    color: "from-green-500/20 to-green-600/5",
+    borderColor: "border-green-500/30",
+    description: "Premium cricket turf with professional-grade nets and floodlights",
+    priceFrom: 1800,
+  },
+  {
+    id: "football",
+    name: "Football",
+    icon: "⚽",
+    color: "from-blue-500/20 to-blue-600/5",
+    borderColor: "border-blue-500/30",
+    description: "Multi-purpose football turf supporting 5-a-side and 7-a-side",
+    priceFrom: 1800,
+  },
+  {
+    id: "badminton",
+    name: "Badminton",
+    icon: "🏸",
+    color: "from-yellow-500/20 to-yellow-600/5",
+    borderColor: "border-yellow-500/30",
+    description: "Indoor courts at Home Shuttlers Academy with professional coaching",
+    priceFrom: 400,
+  },
+  {
+    id: "box_cricket",
+    name: "Box Cricket",
+    icon: "🥊",
+    color: "from-red-500/20 to-red-600/5",
+    borderColor: "border-red-500/30",
+    description: "Enclosed box cricket arena for quick matches and corporate events",
+    priceFrom: 1500,
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    name: "Abhishek M.",
+    source: "CricHeroes",
+    rating: 5,
+    text: "Best cricket turf in Kandivali! The nets are professional grade and the floodlights are excellent. Paul sir's coaching is world-class.",
+    sport: "Cricket",
+  },
+  {
+    name: "Priya S.",
+    source: "JustDial",
+    rating: 4.5,
+    text: "Home Shuttlers is a fantastic badminton academy. Coaches are very patient and the court quality is top-notch. My kids love going there!",
+    sport: "Badminton",
+  },
+  {
+    name: "Rohan K.",
+    source: "BookMyPlayer",
+    rating: 5,
+    text: "Booked the football turf for a corporate event. Everything was perfectly organized. The turf quality is amazing and staff is very helpful.",
+    sport: "Football",
+  },
+  {
+    name: "Sneha D.",
+    source: "Google",
+    rating: 4.5,
+    text: "Great facility for box cricket. We had an amazing time. The booking process was smooth and the turf was well-maintained.",
+    sport: "Box Cricket",
+  },
+  {
+    name: "Vikram P.",
+    source: "CricHeroes",
+    rating: 5,
+    text: "Training under Paul Valthaty is a dream come true. His IPL experience and coaching techniques have improved my game tremendously.",
+    sport: "Cricket Academy",
+  },
+  {
+    name: "Anita R.",
+    source: "JustDial",
+    rating: 4,
+    text: "Very well-maintained badminton courts. The coaching staff is professional and the timings are flexible. Highly recommended!",
+    sport: "Badminton",
+  },
+];
+
+export const ORIGIN_STORY = {
+  title: "Where Mumbai Plays",
+  subtitle: "Our Story",
+  paragraphs: [
+    "HomeGround was born from a simple belief — every athlete deserves a world-class playing surface, right in their neighbourhood. In the heart of Kandivali East, Mumbai, we set out to build more than just a turf. We built a community.",
+    "Co-founded by IPL cricketer Paul Valthaty, alongside Sparsh Tangri, Archana Tangri, and Rahul, HomeGround started as a single cricket turf and grew into a multi-sport destination offering cricket, football, badminton, and box cricket facilities.",
+    "With the launch of the Paul Valthaty Cricket Academy and the Home Shuttlers Badminton Academy, HomeGround became a place where casual players and serious athletes alike could train, compete, and grow — all under one roof.",
+    "Today, HomeGround is Kandivali's go-to sports hub, serving hundreds of players every week. Whether you're booking a turf for a weekend match or enrolling your child in professional coaching, HomeGround is where your game begins.",
+  ],
+};
+
+export const ACADEMY_DATA = {
+  cricket: {
+    name: "Paul Valthaty Cricket Academy",
+    tagline: "Train with an IPL Legend",
+    description: "Founded by former IPL cricketer Paul Valthaty, this academy offers professional cricket coaching for all ages and skill levels. From batting technique to match strategy, learn from someone who has performed on the biggest stage.",
+    headCoach: FOUNDERS[0],
+    programs: [
+      { name: "Junior Program (8-14 yrs)", schedule: "Mon, Wed, Fri — 4:00 PM to 6:00 PM", fee: "₹3,500/month", level: "Beginner to Intermediate" },
+      { name: "Senior Program (15+ yrs)", schedule: "Tue, Thu, Sat — 6:00 PM to 8:00 PM", fee: "₹4,500/month", level: "Intermediate to Advanced" },
+      { name: "Weekend Batch", schedule: "Sat & Sun — 7:00 AM to 9:00 AM", fee: "₹3,000/month", level: "All Levels" },
+      { name: "Personal Coaching", schedule: "By Appointment", fee: "₹1,500/session", level: "Customized" },
+    ],
+    features: ["Professional-grade nets", "Video analysis sessions", "Fitness training", "Match simulation", "Mental conditioning", "Tournament preparation"],
+  },
+  badminton: {
+    name: "Home Shuttlers Badminton Academy",
+    tagline: "Smash Your Limits",
+    description: "Located on the 4th Floor of Thakur Shyamnarayan School, Home Shuttlers offers professional badminton coaching with experienced coaches. Whether you're picking up a racket for the first time or training for tournaments, we have a program for you.",
+    headCoach: { name: "Professional Coaching Team", role: "Certified BWF Coaches", image: null, bio: "Our team of certified coaches brings years of competitive and coaching experience to help you improve your game.", highlights: [] },
+    programs: [
+      { name: "Kids Batch (6-12 yrs)", schedule: "Mon to Fri — 4:00 PM to 5:30 PM", fee: "₹2,500/month", level: "Beginner" },
+      { name: "Teens Batch (13-17 yrs)", schedule: "Mon to Fri — 5:30 PM to 7:00 PM", fee: "₹3,000/month", level: "Beginner to Intermediate" },
+      { name: "Adult Batch (18+ yrs)", schedule: "Mon, Wed, Fri — 7:00 PM to 8:30 PM", fee: "₹3,500/month", level: "All Levels" },
+      { name: "Weekend Coaching", schedule: "Sat & Sun — 8:00 AM to 10:00 AM", fee: "₹2,000/month", level: "All Levels" },
+    ],
+    features: ["Indoor courts", "Professional equipment", "Footwork training", "Strategy sessions", "Tournament coaching", "Flexible timings"],
+  },
+};
+
+export const STATS = [
+  { value: "500+", label: "Players Weekly" },
+  { value: "4.5", label: "Average Rating" },
+  { value: "5", label: "Sports Offered" },
+  { value: "2", label: "Academies" },
+];
