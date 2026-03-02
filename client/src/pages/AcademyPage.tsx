@@ -234,7 +234,7 @@ export default function AcademyPage() {
                     </SelectContent>
                   </Select>
                   <Textarea placeholder="Any message or questions?" rows={3} value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} className="bg-background" />
-                  <Button type="submit" className="w-full bg-primary text-primary-foreground glow-neon" disabled={enrollMutation.isPending}>
+                  <Button type="submit" className="w-full bg-primary text-primary-foreground glow-primary font-sans font-semibold" disabled={enrollMutation.isPending}>
                     {enrollMutation.isPending ? "Submitting..." : "Submit Enrollment"}
                   </Button>
                 </form>

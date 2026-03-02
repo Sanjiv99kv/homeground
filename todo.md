@@ -35,3 +35,14 @@
 - [ ] Bio recommendations for all accounts
 - [ ] Competitor analysis summary
 - [ ] KPI targets for 30-day growth
+
+## Design Overhaul (v2)
+- [x] Fetch real HomeGround logo from Instagram/Facebook
+- [x] Find premium sports video assets for hero and backgrounds
+- [x] Switch to bright, luxury sports theme with bold colors and gradients
+- [x] Add video background to hero section
+- [x] Add rich animations — parallax, staggered reveals, hover effects, glowing elements
+- [x] Redesign all sections to feel premium and hand-crafted
+- [x] Make the site feel alive with micro-interactions and motion
+- [x] Ensure mobile responsiveness with new design
+- [x] Final polish and checkpoint (v2)

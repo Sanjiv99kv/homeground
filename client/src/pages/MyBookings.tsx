@@ -84,7 +84,7 @@ export default function MyBookings() {
                 <h3 className="font-heading font-semibold text-lg mb-2">No Bookings Yet</h3>
                 <p className="text-muted-foreground mb-6">Book your first turf and start playing!</p>
                 <Link href="/book">
-                  <Button className="bg-primary text-primary-foreground glow-neon">Book a Turf</Button>
+                  <Button className="bg-primary text-primary-foreground glow-primary font-sans font-semibold">Book a Turf</Button>
                 </Link>
               </CardContent>
             </Card>

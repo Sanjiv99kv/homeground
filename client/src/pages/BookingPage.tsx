@@ -169,7 +169,8 @@ export default function BookingPage() {
                   {SPORTS.map(sport => (
                     <Card
                       key={sport.id}
-                      className={`cursor-pointer border hover:border-primary/50 transition-all ${sport.borderColor} bg-gradient-to-b ${sport.color}`}
+                      className={`cursor-pointer border border-border/50 hover:border-primary/50 transition-all`}
+                      style={{ background: sport.bgGlow }}
                       onClick={() => handleSportSelect(sport.id)}
                     >
                       <CardContent className="p-6 flex items-center gap-4">
@@ -365,7 +366,7 @@ export default function BookingPage() {
                         </Button>
                       ) : (
                         <Button
-                          className="w-full bg-primary text-primary-foreground glow-neon font-semibold"
+                          className="w-full bg-primary text-primary-foreground glow-primary font-sans font-semibold"
                           onClick={handleBooking}
                           disabled={createBooking.isPending || confirmPayment.isPending}
                         >

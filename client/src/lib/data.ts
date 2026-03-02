@@ -1,14 +1,21 @@
 // CDN image URLs
 export const IMAGES = {
+  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_official_logo_c714f159.jpeg",
   paulPortrait: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_portrait_07cdb9d9.jpg",
   paulIpl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_ipl_action_31682a5c.jpg",
   paulCoaching: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/paul_valthaty_coaching_0176bbd9.jpg",
   turfNight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/turf_night_5526d0e2.jpg",
   turfFacility: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_turf_facility_3990d30d.jpg",
+  turfCover: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_turf_cover_652592f6.jpeg",
+};
+
+// Free Pexels video URLs for hero backgrounds
+export const VIDEOS = {
+  cricketHero: "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4",
+  sportsAction: "https://videos.pexels.com/video-files/3048163/3048163-uhd_2560_1440_25fps.mp4",
 };
 
 // WhatsApp number is configurable via VITE_WHATSAPP_NUMBER env variable
-// Leave blank to hide WhatsApp buttons, or set to a number like "919082210021"
 export const WHATSAPP_NUMBER = (import.meta as any).env?.VITE_WHATSAPP_NUMBER || "";
 export const WHATSAPP_URL = WHATSAPP_NUMBER
   ? `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20HomeGround!%20I%27d%20like%20to%20know%20more%20about%20your%20services.`
@@ -21,6 +28,7 @@ export const FOUNDERS = [
     image: IMAGES.paulPortrait,
     bio: "Former IPL cricketer who played for Kings XI Punjab. Scored a century against CSK in IPL 2011 — the first by a Punjab player. With 36 First-Class matches and 1,400+ runs, Paul now channels his elite experience into coaching the next generation at HomeGround Cricket Academy.",
     highlights: ["IPL Century vs CSK (2011)", "36 First-Class Matches", "1,400+ Runs", "Kings XI Punjab"],
+    color: "hg-orange",
   },
   {
     name: "Sparsh Tangri",
@@ -28,6 +36,7 @@ export const FOUNDERS = [
     image: null,
     bio: "The operational backbone of HomeGround. Sparsh manages the day-to-day running of the turf facilities, ensuring every booking runs smoothly and every player has a premium experience. His vision of making sports accessible to all drives the business forward.",
     highlights: ["Operations Strategy", "Business Development", "Customer Experience"],
+    color: "hg-blue",
   },
   {
     name: "Archana Tangri",
@@ -35,6 +44,7 @@ export const FOUNDERS = [
     image: null,
     bio: "Archana brings strong business acumen to HomeGround. She oversees financial planning, partnerships, and the expansion strategy that has made HomeGround a trusted name in Kandivali's sports community.",
     highlights: ["Financial Planning", "Strategic Partnerships", "Growth Strategy"],
+    color: "hg-red",
   },
   {
     name: "Rahul",
@@ -42,6 +52,7 @@ export const FOUNDERS = [
     image: null,
     bio: "Rahul drives the technology and digital presence of HomeGround. From the booking platform to social media, he ensures HomeGround stays ahead of the curve in the digital sports space.",
     highlights: ["Technology", "Digital Strategy", "Platform Development"],
+    color: "hg-lime",
   },
 ];
 
@@ -50,8 +61,8 @@ export const SPORTS = [
     id: "cricket",
     name: "Cricket",
     icon: "🏏",
-    color: "from-green-500/20 to-green-600/5",
-    borderColor: "border-green-500/30",
+    gradient: "from-[oklch(0.75_0.18_55)] to-[oklch(0.65_0.15_40)]",
+    bgGlow: "oklch(0.75 0.18 55 / 15%)",
     description: "Premium cricket turf with professional-grade nets and floodlights",
     priceFrom: 1800,
   },
@@ -59,8 +70,8 @@ export const SPORTS = [
     id: "football",
     name: "Football",
     icon: "⚽",
-    color: "from-blue-500/20 to-blue-600/5",
-    borderColor: "border-blue-500/30",
+    gradient: "from-[oklch(0.65_0.2_240)] to-[oklch(0.55_0.18_220)]",
+    bgGlow: "oklch(0.65 0.2 240 / 15%)",
     description: "Multi-purpose football turf supporting 5-a-side and 7-a-side",
     priceFrom: 1800,
   },
@@ -68,8 +79,8 @@ export const SPORTS = [
     id: "badminton",
     name: "Badminton",
     icon: "🏸",
-    color: "from-yellow-500/20 to-yellow-600/5",
-    borderColor: "border-yellow-500/30",
+    gradient: "from-[oklch(0.8_0.2_125)] to-[oklch(0.7_0.18_110)]",
+    bgGlow: "oklch(0.8 0.2 125 / 15%)",
     description: "Indoor courts at Home Shuttlers Academy with professional coaching",
     priceFrom: 400,
   },
@@ -77,8 +88,8 @@ export const SPORTS = [
     id: "box_cricket",
     name: "Box Cricket",
     icon: "🥊",
-    color: "from-red-500/20 to-red-600/5",
-    borderColor: "border-red-500/30",
+    gradient: "from-[oklch(0.6_0.22_25)] to-[oklch(0.5_0.2_15)]",
+    bgGlow: "oklch(0.6 0.22 25 / 15%)",
     description: "Enclosed box cricket arena for quick matches and corporate events",
     priceFrom: 1500,
   },
@@ -158,7 +169,7 @@ export const ACADEMY_DATA = {
     name: "Home Shuttlers Badminton Academy",
     tagline: "Smash Your Limits",
     description: "Located on the 4th Floor of Thakur Shyamnarayan School, Home Shuttlers offers professional badminton coaching with experienced coaches. Whether you're picking up a racket for the first time or training for tournaments, we have a program for you.",
-    headCoach: { name: "Professional Coaching Team", role: "Certified BWF Coaches", image: null, bio: "Our team of certified coaches brings years of competitive and coaching experience to help you improve your game.", highlights: [] },
+    headCoach: { name: "Professional Coaching Team", role: "Certified BWF Coaches", image: null, bio: "Our team of certified coaches brings years of competitive and coaching experience to help you improve your game.", highlights: [], color: "hg-lime" },
     programs: [
       { name: "Kids Batch (6-12 yrs)", schedule: "Mon to Fri — 4:00 PM to 5:30 PM", fee: "₹2,500/month", level: "Beginner" },
       { name: "Teens Batch (13-17 yrs)", schedule: "Mon to Fri — 5:30 PM to 7:00 PM", fee: "₹3,000/month", level: "Beginner to Intermediate" },
@@ -170,8 +181,8 @@ export const ACADEMY_DATA = {
 };
 
 export const STATS = [
-  { value: "500+", label: "Players Weekly" },
-  { value: "4.5", label: "Average Rating" },
-  { value: "5", label: "Sports Offered" },
-  { value: "2", label: "Academies" },
+  { value: "500+", label: "Players Weekly", icon: "users" },
+  { value: "4.5★", label: "Average Rating", icon: "star" },
+  { value: "5", label: "Sports Offered", icon: "trophy" },
+  { value: "2", label: "Pro Academies", icon: "award" },
 ];
