@@ -11,6 +11,7 @@ export const IMAGES = {
 
 // Free Pexels video URLs for hero backgrounds
 export const VIDEOS = {
+  cricketNight: "https://videos.pexels.com/video-files/11755921/11755921-hd_1920_1080_30fps.mp4",
   cricketHero: "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4",
   sportsAction: "https://videos.pexels.com/video-files/3048163/3048163-uhd_2560_1440_25fps.mp4",
 };

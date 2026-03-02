@@ -46,3 +46,11 @@
 - [x] Make the site feel alive with micro-interactions and motion
 - [x] Ensure mobile responsiveness with new design
 - [x] Final polish and checkpoint (v2)
+
+## Hero Section Redesign (v3)
+- [x] Find real cricket/sports video for hero background (not abstract/tech)
+- [x] Remove tech network pattern from hero
+- [x] Add cricket-themed imagery (batsman, stadium, turf)
+- [x] Add dynamic text reveal animations
+- [x] Add floating sports elements and energy particles
+- [x] Make hero feel authentically sporty and premium

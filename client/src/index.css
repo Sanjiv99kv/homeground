@@ -271,6 +271,78 @@
     50% { transform: translateY(-12px); }
   }
 
+  /* Cricket ball spin */
+  .spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Hero text reveal */
+  .text-reveal {
+    animation: text-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    clip-path: inset(0 100% 0 0);
+  }
+  @keyframes text-reveal {
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  /* Gradient sweep animation */
+  .gradient-sweep {
+    background-size: 200% 200%;
+    animation: gradient-sweep 4s ease infinite;
+  }
+  @keyframes gradient-sweep {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Particle float */
+  .particle-float {
+    animation: particle-float 3s ease-in-out infinite;
+  }
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-20px) translateX(10px) scale(1.2); opacity: 1; }
+  }
+
+  /* Glow pulse for hero elements */
+  .hero-glow {
+    animation: hero-glow 3s ease-in-out infinite;
+  }
+  @keyframes hero-glow {
+    0%, 100% { filter: drop-shadow(0 0 10px oklch(0.75 0.18 55 / 40%)); }
+    50% { filter: drop-shadow(0 0 30px oklch(0.75 0.18 55 / 70%)); }
+  }
+
+  /* Bounce in */
+  .bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  @keyframes bounce-in {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Video overlay with sporty gradient */
+  .video-overlay-sporty {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, oklch(0.75 0.18 55 / 15%) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, oklch(0.65 0.2 240 / 10%) 0%, transparent 60%),
+      linear-gradient(
+        to bottom,
+        oklch(0.08 0.015 250 / 50%) 0%,
+        oklch(0.08 0.015 250 / 30%) 30%,
+        oklch(0.08 0.015 250 / 50%) 60%,
+        oklch(0.08 0.015 250 / 90%) 100%
+      );
+  }
+
   /* Pulse glow */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
