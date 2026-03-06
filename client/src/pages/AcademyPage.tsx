@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ACADEMY_DATA, IMAGES, WHATSAPP_URL } from "@/lib/data";
 import { trpc } from "@/lib/trpc";
 import { useParams, Link } from "wouter";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, Trophy, Clock, Users, Star, CheckCircle, GraduationCap, MapPin, Phone, ChevronRight, ArrowRight, Zap, Target, Shield, Award } from "lucide-react";
@@ -49,6 +49,10 @@ export default function AcademyPage() {
   const params = useParams<{ sport: string }>();
   const sport = params.sport as "cricket" | "badminton";
   const academy = ACADEMY_DATA[sport];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [sport]);
   const accent = ACCENT_COLORS[sport] || ACCENT_COLORS.cricket;
   const gallery = GALLERY[sport] || GALLERY.cricket;
   const heroImage = HERO_IMAGES[sport] || HERO_IMAGES.cricket;

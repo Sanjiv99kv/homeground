@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { IMAGES, VIDEOS, FOUNDERS, SPORTS, TESTIMONIALS, ORIGIN_STORY, STATS, WHATSAPP_URL } from "@/lib/data";
 import { trpc } from "@/lib/trpc";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Star, MapPin, Phone, ArrowRight, ChevronRight, Trophy, Users, Zap, Clock, Award, Play, Target, Shield } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
@@ -343,6 +343,7 @@ function SocialProofBar() {
 
 /* ─── Sports Section with Glowing Cards ─── */
 function SportsSection() {
+  const [, setLocation] = useLocation();
   return (
     <section id="sports" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background accents */}
@@ -375,11 +376,17 @@ function SportsSection() {
               transition={{ duration: 0.6, delay: i * 0.12 }}
             >
               <Link href={`/book?sport=${sport.id}`}>
-                <div className="sport-card relative group rounded-2xl overflow-hidden cursor-pointer h-full" style={{ background: sport.bgGlow }}>
-                  {/* Glow effect on hover */}
-                  <div className="sport-card-glow absolute inset-0 rounded-2xl" style={{ boxShadow: `0 0 40px ${sport.bgGlow}, 0 0 80px ${sport.bgGlow}` }} />
+                <div className="sport-card relative group rounded-2xl overflow-hidden cursor-pointer h-full" style={{ background: sport.bgGlow, ["--sport-accent" as string]: sport.accentColor }}>
+                  {/* Single-color glow matching the card */}
+                  <div
+                    className="sport-card-glow absolute inset-0 rounded-2xl"
+                    style={{ boxShadow: `0 0 40px ${sport.accentGlow}, 0 0 80px ${sport.accentGlow}` }}
+                  />
 
-                  <div className="relative glass-card rounded-2xl p-7 h-full border-gradient">
+                  <div
+                    className="relative glass-card rounded-2xl p-7 h-full sport-card-border"
+                    style={{ ["--sport-accent" as string]: sport.accentColor }}
+                  >
                     <motion.div
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -410,21 +417,25 @@ function SportsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link href="/academy/cricket">
-              <div className="group relative rounded-2xl overflow-hidden cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-hg-orange/15 to-transparent" />
-                <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-orange/20 hover:border-hg-orange/40 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0">
-                    <img src={IMAGES.paulCoaching} alt="Paul Valthaty" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-xl tracking-wider text-foreground">PAUL VALTHATY CRICKET ACADEMY</h3>
-                    <p className="text-sm font-sans text-primary">Train with an IPL legend</p>
-                  </div>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setLocation("/academy/cricket")}
+              onKeyDown={(e) => e.key === "Enter" && setLocation("/academy/cricket")}
+              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-hg-orange/15 to-transparent" />
+              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-orange/20 hover:border-hg-orange/40 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0">
+                  <img src={IMAGES.paulCoaching} alt="Paul Valthaty" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-heading text-xl tracking-wider text-foreground">PAUL VALTHATY CRICKET ACADEMY</h3>
+                  <p className="text-sm font-sans text-primary">Train with an IPL legend</p>
+                </div>
+                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
               </div>
-            </Link>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -432,21 +443,25 @@ function SportsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link href="/academy/badminton">
-              <div className="group relative rounded-2xl overflow-hidden cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-r from-hg-lime/15 to-transparent" />
-                <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-lime/20 hover:border-hg-lime/40 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-hg-lime/30">
-                    <img src={IMAGES.badmintonCoachTeam} alt="Home Shuttlers Coaching Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-xl tracking-wider text-foreground">HOME SHUTTLERS BADMINTON ACADEMY</h3>
-                    <p className="text-sm font-sans text-hg-lime">Smash your limits</p>
-                  </div>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-hg-lime group-hover:translate-x-1 transition-all shrink-0" />
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setLocation("/academy/badminton")}
+              onKeyDown={(e) => e.key === "Enter" && setLocation("/academy/badminton")}
+              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-hg-lime/15 to-transparent" />
+              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-lime/20 hover:border-hg-lime/40 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-hg-lime/30">
+                  <img src={IMAGES.badmintonCoachTeam} alt="Home Shuttlers Coaching Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-heading text-xl tracking-wider text-foreground">HOME SHUTTLERS BADMINTON ACADEMY</h3>
+                  <p className="text-sm font-sans text-hg-lime">Smash your limits</p>
+                </div>
+                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-hg-lime group-hover:translate-x-1 transition-all shrink-0" />
               </div>
-            </Link>
+            </div>
           </motion.div>
         </div>
       </div>
