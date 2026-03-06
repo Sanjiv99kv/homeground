@@ -375,36 +375,50 @@ function SportsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
             >
-              <Link href={`/book?sport=${sport.id}`}>
-                <div className="sport-card relative group rounded-2xl overflow-hidden cursor-pointer h-full" style={{ background: sport.bgGlow, ["--sport-accent" as string]: sport.accentColor }}>
-                  {/* Single-color glow matching the card */}
-                  <div
-                    className="sport-card-glow absolute inset-0 rounded-2xl"
-                    style={{ boxShadow: `0 0 40px ${sport.accentGlow}, 0 0 80px ${sport.accentGlow}` }}
-                  />
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setLocation(`/book?sport=${sport.id}`);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    setLocation(`/book?sport=${sport.id}`);
+                  }
+                }}
+                className="sport-card relative group rounded-2xl overflow-hidden cursor-pointer h-full"
+                style={{ background: sport.bgGlow, ["--sport-accent" as string]: sport.accentColor }}
+              >
+                {/* Single-color glow matching the card */}
+                <div
+                  className="sport-card-glow absolute inset-0 rounded-2xl"
+                  style={{ boxShadow: `0 0 40px ${sport.accentGlow}, 0 0 80px ${sport.accentGlow}` }}
+                />
 
-                  <div
-                    className="relative glass-card rounded-2xl p-7 h-full sport-card-border"
-                    style={{ ["--sport-accent" as string]: sport.accentColor }}
+                <div
+                  className="relative glass-card rounded-2xl p-7 h-full sport-card-border"
+                  style={{ ["--sport-accent" as string]: sport.accentColor }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="text-5xl mb-5"
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="text-5xl mb-5"
-                    >
-                      {sport.icon}
-                    </motion.div>
-                    <h3 className="font-heading text-2xl tracking-wider mb-2 text-foreground">{sport.name}</h3>
-                    <p className="text-sm font-sans text-muted-foreground mb-5 leading-relaxed">{sport.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-sans font-bold text-primary">From ₹{sport.priceFrom}/hr</span>
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
-                        <ChevronRight className="h-4 w-4 text-primary group-hover:translate-x-0.5 transition-transform" />
-                      </div>
+                    {sport.icon}
+                  </motion.div>
+                  <h3 className="font-heading text-2xl tracking-wider mb-2 text-foreground">{sport.name}</h3>
+                  <p className="text-sm font-sans text-muted-foreground mb-5 leading-relaxed">{sport.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-sans font-bold text-primary">From ₹{sport.priceFrom}/hr</span>
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
+                      <ChevronRight className="h-4 w-4 text-primary group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
