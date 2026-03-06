@@ -26,8 +26,8 @@ export const IMAGES = {
   cricketDaylight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_daylight_practice_f581de01.jpeg",
   // Individual founder photos
   archanaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/archana_tangri_photo_96052119.png",
-  rahulPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/rahul_tangri_photo_477dbb31.png",
-  sparshPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/sparsh_tangri_photo_0248a7b8.png",
+  rahulPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/sparsh_tangri_photo_0248a7b8.png",
+  sparshPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/rahul_tangri_photo_477dbb31.png",
 };
 
 // Free Pexels video URLs for hero backgrounds

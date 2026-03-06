@@ -96,3 +96,6 @@
 - [x] Upload Rahul Tangri's individual photo to CDN
 - [x] Upload Sparsh Tangri's individual photo to CDN
 - [x] Assign photos to correct founder cards
+
+## Founder Photo Swap (v10)
+- [x] Swap Rahul Tangri and Sparsh Tangri individual headshot photos
