@@ -99,3 +99,6 @@
 
 ## Founder Photo Swap (v10)
 - [x] Swap Rahul Tangri and Sparsh Tangri individual headshot photos
+
+## Founder Text Content Swap (v11)
+- [x] Swap all text (name, role, bio, highlights) between Rahul Tangri and Sparsh Tangri cards (keep photos in place)

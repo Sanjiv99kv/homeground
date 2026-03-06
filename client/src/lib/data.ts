@@ -45,12 +45,12 @@ export const WHATSAPP_URL = WHATSAPP_NUMBER
 
 export const FOUNDERS = [
   {
-    name: "Rahul Tangri",
-    role: "Co-Founder & Digital Architect",
+    name: "Sparsh Tangri",
+    role: "Co-Founder & Visionary",
     image: IMAGES.rahulPhoto,
-    bio: "The digital heartbeat of HomeGround. Rahul bridges the gap between grassroots sport and cutting-edge technology, building the platforms that let hundreds of players book, train, and compete every week. From the seamless booking engine to the social media presence that has made HomeGround go viral in Kandivali, Rahul ensures the brand lives as powerfully online as it does on the turf. His tech-first mindset keeps HomeGround ahead of every competitor.",
-    highlights: ["Tech Innovation", "Platform Engineering", "Digital Strategy", "Social Media"],
-    color: "hg-blue",
+    bio: "A born entrepreneur with an unwavering belief that sport transforms lives. Sparsh envisioned HomeGround not as a business, but as a movement — a place where every child in Kandivali could access world-class facilities without travelling across Mumbai. He architects the operations, forges partnerships, and ensures that every square foot of turf delivers a premium experience. His relentless pursuit of excellence has turned a single cricket pitch into Mumbai's most talked-about multi-sport destination.",
+    highlights: ["Strategic Vision", "Operations Excellence", "Community Builder", "Business Growth"],
+    color: "hg-lime",
   },
   {
     name: "Archana Tangri",
@@ -61,12 +61,12 @@ export const FOUNDERS = [
     color: "hg-red",
   },
   {
-    name: "Sparsh Tangri",
-    role: "Co-Founder & Visionary",
+    name: "Rahul Tangri",
+    role: "Co-Founder & Digital Architect",
     image: IMAGES.sparshPhoto,
-    bio: "A born entrepreneur with an unwavering belief that sport transforms lives. Sparsh envisioned HomeGround not as a business, but as a movement — a place where every child in Kandivali could access world-class facilities without travelling across Mumbai. He architects the operations, forges partnerships, and ensures that every square foot of turf delivers a premium experience. His relentless pursuit of excellence has turned a single cricket pitch into Mumbai's most talked-about multi-sport destination.",
-    highlights: ["Strategic Vision", "Operations Excellence", "Community Builder", "Business Growth"],
-    color: "hg-lime",
+    bio: "The digital heartbeat of HomeGround. Rahul bridges the gap between grassroots sport and cutting-edge technology, building the platforms that let hundreds of players book, train, and compete every week. From the seamless booking engine to the social media presence that has made HomeGround go viral in Kandivali, Rahul ensures the brand lives as powerfully online as it does on the turf. His tech-first mindset keeps HomeGround ahead of every competitor.",
+    highlights: ["Tech Innovation", "Platform Engineering", "Digital Strategy", "Social Media"],
+    color: "hg-blue",
   },
 ];
 
