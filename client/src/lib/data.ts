@@ -17,6 +17,10 @@ export const IMAGES = {
   cricketNets: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_nets_practice_19aaa38a.jpg",
   cricketCoaching: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_coaching_session_c2b8a33f.jpg",
   cricketDrive: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_coaching_drive_4fc8d51d.jpg",
+  // Real Home Shuttlers images from BookMyPlayer
+  badmintonCoachTeam: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_coach_main_39794a64.jpg",
+  badmintonGirlsTeam: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_court_main_c2c0a0d0.jpg",
+  badmintonCoachFb: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_coach_fb_0e5bd2d7.jpg",
 };
 
 // Free Pexels video URLs for hero backgrounds
@@ -180,7 +184,7 @@ export const ACADEMY_DATA = {
     name: "Home Shuttlers Badminton Academy",
     tagline: "Smash Your Limits",
     description: "Located on the 4th Floor of Thakur Shyamnarayan School, Home Shuttlers offers professional badminton coaching with experienced coaches. Whether you're picking up a racket for the first time or training for tournaments, we have a program for you.",
-    headCoach: { name: "Professional Coaching Team", role: "Certified BWF Coaches", image: null, bio: "Our team of certified coaches brings years of competitive and coaching experience to help you improve your game.", highlights: [], color: "hg-lime" },
+    headCoach: { name: "Professional Coaching Team", role: "Certified BWF Coaches", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_coach_main_39794a64.jpg", bio: "Our team of certified coaches brings years of competitive and coaching experience to help you improve your game.", highlights: [], color: "hg-lime" },
     programs: [
       { name: "Kids Batch (6-12 yrs)", schedule: "Mon to Fri — 4:00 PM to 5:30 PM", fee: "₹2,500/month", level: "Beginner" },
       { name: "Teens Batch (13-17 yrs)", schedule: "Mon to Fri — 5:30 PM to 7:00 PM", fee: "₹3,000/month", level: "Beginner to Intermediate" },

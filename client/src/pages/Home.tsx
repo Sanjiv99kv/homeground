@@ -436,8 +436,8 @@ function SportsSection() {
               <div className="group relative rounded-2xl overflow-hidden cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-r from-hg-lime/15 to-transparent" />
                 <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-lime/20 hover:border-hg-lime/40 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-2xl bg-hg-lime/20 flex items-center justify-center shrink-0">
-                    <span className="text-3xl">🏸</span>
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-hg-lime/30">
+                    <img src={IMAGES.badmintonCoachTeam} alt="Home Shuttlers Coaching Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-heading text-xl tracking-wider text-foreground">HOME SHUTTLERS BADMINTON ACADEMY</h3>

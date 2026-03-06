@@ -69,3 +69,7 @@
 
 ## Bug Fixes
 - [x] Fix garbled/overlapping marquee social proof bar text
+
+## Coach Image Fix (v5)
+- [x] Find real badminton coach image from BookMyPlayer/references
+- [x] Replace emoji icon in Home Shuttlers academy card with real coach photo
