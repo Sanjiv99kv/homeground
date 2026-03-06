@@ -73,3 +73,16 @@
 ## Coach Image Fix (v5)
 - [x] Find real badminton coach image from BookMyPlayer/references
 - [x] Replace emoji icon in Home Shuttlers academy card with real coach photo
+
+## Our Story Image Fix (v6)
+- [x] Replace night turf image in Our Story section with bright daylight sports image
+
+## Founders Section Redesign (v7)
+- [x] Remove Paul Valthaty from founders section
+- [x] Research Sparsh Tangri's Facebook profile for real bio details (login required, using existing research)
+- [x] Research Archana Tangri's Facebook profile for real bio details (login required, using existing research)
+- [x] Research Rahul's Facebook profile for real bio details (login required, using existing research)
+- [x] Upload founders group photo to CDN
+- [x] Redesign founders section with luxury styling and group photo hero
+- [x] Write brilliant copy for each founder based on real info
+- [x] Replace Our Story night image with daylight cricket image

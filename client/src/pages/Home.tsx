@@ -496,7 +496,7 @@ function OriginStorySection() {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden border border-border/30">
-              <img src={IMAGES.turfNight} alt="HomeGround Turf at Night" className="w-full h-[500px] object-cover" />
+              <img src={IMAGES.cricketDaylight} alt="Cricket Practice in Daylight at HomeGround" className="w-full h-[500px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="glass-card-bright rounded-2xl p-5">
@@ -528,9 +528,12 @@ function FoundersSection() {
 
   return (
     <section id="founders" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-hg-orange/5 rounded-full blur-[150px]" />
+      {/* Ambient glow orbs */}
+      <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-hg-blue/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-hg-orange/5 rounded-full blur-[150px]" />
 
       <div className="container relative z-10">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -538,66 +541,121 @@ function FoundersSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-sm font-sans font-semibold text-primary uppercase tracking-[0.2em] mb-4">The Team</span>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl tracking-wider mb-5">MEET THE FOUNDERS</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-hg-red mx-auto rounded-full mb-5" />
-          <p className="text-muted-foreground font-sans max-w-xl mx-auto">
-            United by a love for sports and community.
+          <span className="inline-block text-sm font-sans font-semibold text-primary uppercase tracking-[0.2em] mb-4">The Visionaries</span>
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl tracking-wider mb-5">THE PEOPLE BEHIND<br/>THE PLAYGROUND</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-hg-blue via-primary to-hg-red mx-auto rounded-full mb-5" />
+          <p className="text-muted-foreground font-sans max-w-2xl mx-auto text-base leading-relaxed">
+            Three individuals. One shared dream. They didn't just build a sports facility — they built a community where champions are made, friendships are forged, and every player finds their home ground.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Group Photo Hero */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative mb-20 max-w-4xl mx-auto"
+        >
+          <div className="relative rounded-3xl overflow-hidden group">
+            {/* Gradient border glow */}
+            <div className="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-hg-blue via-primary to-hg-red opacity-60 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
+            <div className="relative rounded-3xl overflow-hidden">
+              <img
+                src={IMAGES.foundersGroup}
+                alt="Sparsh Tangri, Archana Tangri, and Rahul — Co-Founders of HomeGround"
+                className="w-full h-[350px] sm:h-[450px] md:h-[550px] object-cover object-top group-hover:scale-[1.02] transition-transform duration-700"
+              />
+              {/* Gradient overlay at bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+              {/* Names overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+                <div className="flex flex-wrap justify-center gap-6 sm:gap-12">
+                  {FOUNDERS.map((f, i) => (
+                    <motion.div
+                      key={f.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+                      className="text-center"
+                    >
+                      <p className="font-heading text-lg sm:text-xl tracking-wider text-foreground">{f.name.toUpperCase()}</p>
+                      <p className="text-xs sm:text-sm font-sans" style={{ color: colorMap[f.color] }}>{f.role}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Individual Founder Cards — Luxury Layout */}
+        <div className="space-y-16">
           {FOUNDERS.map((founder, i) => {
             const accentColor = colorMap[founder.color] || colorMap["hg-orange"];
+            const isEven = i % 2 === 0;
             return (
               <motion.div
                 key={founder.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
+                initial={{ opacity: 0, x: isEven ? -60 : 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
               >
-                <div className="group relative rounded-2xl overflow-hidden h-full">
-                  <div className="glass-card rounded-2xl p-6 h-full hover:border-primary/20 transition-all duration-500">
-                    {/* Avatar */}
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="relative w-24 h-24 rounded-2xl overflow-hidden mx-auto mb-5"
-                    >
-                      {founder.image ? (
-                        <img src={founder.image} alt={founder.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                      ) : (
-                        <div
-                          className="w-full h-full flex items-center justify-center text-3xl font-heading font-normal tracking-wider"
-                          style={{ background: `${accentColor}`, color: 'oklch(0.12 0.01 55)' }}
-                        >
-                          {founder.name.split(' ').map(n => n[0]).join('')}
-                        </div>
-                      )}
-                      {/* Color accent dot */}
-                      <div
-                        className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-card"
-                        style={{ background: accentColor }}
-                      />
-                    </motion.div>
+                {/* Left: Large initial + accent */}
+                <div className="flex-shrink-0 relative">
+                  <motion.div
+                    whileHover={{ scale: 1.05, rotate: isEven ? 3 : -3 }}
+                    transition={{ type: 'spring', stiffness: 200 }}
+                    className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${accentColor}, color-mix(in oklch, ${accentColor} 60%, oklch(0.2 0 0)))` }}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-heading text-5xl sm:text-6xl tracking-wider text-white/90 drop-shadow-lg">
+                        {founder.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  </motion.div>
+                  {/* Decorative ring */}
+                  <div
+                    className="absolute -inset-3 rounded-3xl border-2 opacity-20"
+                    style={{ borderColor: accentColor }}
+                  />
+                </div>
 
-                    <h3 className="font-heading text-xl tracking-wider text-center text-foreground">{founder.name.toUpperCase()}</h3>
-                    <p className="text-sm font-sans text-center mb-4" style={{ color: accentColor }}>{founder.role}</p>
-                    <p className="text-sm font-sans text-muted-foreground leading-relaxed text-center">{founder.bio}</p>
-
-                    {founder.highlights.length > 0 && (
-                      <div className="flex flex-wrap justify-center gap-2 mt-5">
-                        {founder.highlights.slice(0, 3).map(h => (
-                          <span
-                            key={h}
-                            className="text-xs font-sans px-3 py-1 rounded-full"
-                            style={{ background: `color-mix(in oklch, ${accentColor} 15%, transparent)`, color: accentColor }}
-                          >
-                            {h}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                {/* Right: Content */}
+                <div className={`flex-1 ${isEven ? 'md:text-left' : 'md:text-right'} text-center`}>
+                  <div className="inline-flex items-center gap-2 mb-3">
+                    <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+                    <span className="text-xs font-sans font-semibold uppercase tracking-[0.15em]" style={{ color: accentColor }}>
+                      {founder.role}
+                    </span>
+                    <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+                  </div>
+                  <h3 className="font-heading text-3xl sm:text-4xl tracking-wider text-foreground mb-4">
+                    {founder.name.toUpperCase()}
+                  </h3>
+                  <p className="text-base font-sans text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                    {founder.bio}
+                  </p>
+                  <div className={`flex flex-wrap gap-2 ${isEven ? 'md:justify-start' : 'md:justify-end'} justify-center`}>
+                    {founder.highlights.map(h => (
+                      <span
+                        key={h}
+                        className="text-xs font-sans font-medium px-4 py-1.5 rounded-full border transition-all duration-300 hover:scale-105"
+                        style={{
+                          background: `color-mix(in oklch, ${accentColor} 10%, transparent)`,
+                          borderColor: `color-mix(in oklch, ${accentColor} 30%, transparent)`,
+                          color: accentColor,
+                        }}
+                      >
+                        {h}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>

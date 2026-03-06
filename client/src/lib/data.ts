@@ -21,6 +21,9 @@ export const IMAGES = {
   badmintonCoachTeam: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_coach_main_39794a64.jpg",
   badmintonGirlsTeam: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_court_main_c2c0a0d0.jpg",
   badmintonCoachFb: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_coach_fb_0e5bd2d7.jpg",
+  // Founders
+  foundersGroup: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/founders_group_photo_48b81685.png",
+  cricketDaylight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_daylight_practice_f581de01.jpeg",
 };
 
 // Free Pexels video URLs for hero backgrounds
@@ -38,35 +41,27 @@ export const WHATSAPP_URL = WHATSAPP_NUMBER
 
 export const FOUNDERS = [
   {
-    name: "Paul Valthaty",
-    role: "Head Coach & Co-Founder",
-    image: IMAGES.paulPortrait,
-    bio: "Former IPL cricketer who played for Kings XI Punjab. Scored a century against CSK in IPL 2011 — the first by a Punjab player. With 36 First-Class matches and 1,400+ runs, Paul now channels his elite experience into coaching the next generation at HomeGround Cricket Academy.",
-    highlights: ["IPL Century vs CSK (2011)", "36 First-Class Matches", "1,400+ Runs", "Kings XI Punjab"],
-    color: "hg-orange",
-  },
-  {
     name: "Sparsh Tangri",
-    role: "Co-Founder & Operations Head",
+    role: "Co-Founder & Visionary",
     image: null,
-    bio: "The operational backbone of HomeGround. Sparsh manages the day-to-day running of the turf facilities, ensuring every booking runs smoothly and every player has a premium experience. His vision of making sports accessible to all drives the business forward.",
-    highlights: ["Operations Strategy", "Business Development", "Customer Experience"],
+    bio: "A born entrepreneur with an unwavering belief that sport transforms lives. Sparsh envisioned HomeGround not as a business, but as a movement — a place where every child in Kandivali could access world-class facilities without travelling across Mumbai. He architects the operations, forges partnerships, and ensures that every square foot of turf delivers a premium experience. His relentless pursuit of excellence has turned a single cricket pitch into Mumbai's most talked-about multi-sport destination.",
+    highlights: ["Strategic Vision", "Operations Excellence", "Community Builder", "Business Growth"],
     color: "hg-blue",
   },
   {
     name: "Archana Tangri",
-    role: "Co-Founder & Business Director",
+    role: "Co-Founder & Business Strategist",
     image: null,
-    bio: "Archana brings strong business acumen to HomeGround. She oversees financial planning, partnerships, and the expansion strategy that has made HomeGround a trusted name in Kandivali's sports community.",
-    highlights: ["Financial Planning", "Strategic Partnerships", "Growth Strategy"],
+    bio: "The quiet force behind HomeGround's rapid ascent. Archana brings a rare combination of sharp financial acumen and deep empathy for the sporting community. She oversees the business strategy, financial planning, and the academy partnerships that have made HomeGround a household name. Her ability to see opportunity where others see obstacles has been instrumental in scaling from a neighbourhood turf to a multi-sport empire with two professional academies.",
+    highlights: ["Financial Strategy", "Academy Partnerships", "Brand Building", "Growth Architecture"],
     color: "hg-red",
   },
   {
     name: "Rahul",
-    role: "Co-Founder & Tech Lead",
+    role: "Co-Founder & Digital Architect",
     image: null,
-    bio: "Rahul drives the technology and digital presence of HomeGround. From the booking platform to social media, he ensures HomeGround stays ahead of the curve in the digital sports space.",
-    highlights: ["Technology", "Digital Strategy", "Platform Development"],
+    bio: "The digital heartbeat of HomeGround. Rahul bridges the gap between grassroots sport and cutting-edge technology, building the platforms that let hundreds of players book, train, and compete every week. From the seamless booking engine to the social media presence that has made HomeGround go viral in Kandivali, Rahul ensures the brand lives as powerfully online as it does on the turf. His tech-first mindset keeps HomeGround ahead of every competitor.",
+    highlights: ["Tech Innovation", "Platform Engineering", "Digital Strategy", "Social Media"],
     color: "hg-lime",
   },
 ];
@@ -171,7 +166,7 @@ export const ACADEMY_DATA = {
     name: "Paul Valthaty Cricket Academy",
     tagline: "Train with an IPL Legend",
     description: "Founded by former IPL cricketer Paul Valthaty, this academy offers professional cricket coaching for all ages and skill levels. From batting technique to match strategy, learn from someone who has performed on the biggest stage.",
-    headCoach: FOUNDERS[0],
+    headCoach: { name: "Paul Valthaty", role: "Head Coach & IPL Legend", image: IMAGES.paulPortrait, bio: "Former IPL cricketer who played for Kings XI Punjab. Scored a century against CSK in IPL 2011 — the first by a Punjab player. With 36 First-Class matches and 1,400+ runs, Paul now channels his elite experience into coaching the next generation.", highlights: ["IPL Century vs CSK (2011)", "36 First-Class Matches", "1,400+ Runs"], color: "hg-orange" },
     programs: [
       { name: "Junior Program (8-14 yrs)", schedule: "Mon, Wed, Fri — 4:00 PM to 6:00 PM", fee: "₹3,500/month", level: "Beginner to Intermediate" },
       { name: "Senior Program (15+ yrs)", schedule: "Tue, Thu, Sat — 6:00 PM to 8:00 PM", fee: "₹4,500/month", level: "Intermediate to Advanced" },
