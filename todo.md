@@ -86,3 +86,6 @@
 - [x] Redesign founders section with luxury styling and group photo hero
 - [x] Write brilliant copy for each founder based on real info
 - [x] Replace Our Story night image with daylight cricket image
+
+## Name Swap Fix (v8)
+- [x] Swap Sparsh Tangri and Rahul name positions in founders group photo overlay
