@@ -355,7 +355,13 @@
   /* Marquee */
   .marquee-track {
     display: flex;
-    animation: marquee 30s linear infinite;
+    width: max-content;
+    gap: 0;
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
   }
   @keyframes marquee {
     0% { transform: translateX(0); }
@@ -442,4 +448,62 @@ html {
 ::selection {
   background: oklch(0.75 0.18 55 / 30%);
   color: oklch(0.97 0 0);
+}
+
+/* Enhanced page transition */
+.page-enter {
+  animation: pageEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover lift effect for cards */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px oklch(0 0 0 / 30%), 0 0 30px oklch(0.75 0.18 55 / 10%);
+}
+
+/* Gradient underline for headings */
+.gradient-underline {
+  position: relative;
+  display: inline-block;
+}
+.gradient-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, oklch(0.75 0.18 55), oklch(0.65 0.2 240));
+  border-radius: 2px;
+}
+
+/* Smooth scale on tap for mobile */
+.tap-scale {
+  transition: transform 0.15s ease;
+}
+.tap-scale:active {
+  transform: scale(0.97);
+}
+
+/* Animated border glow on focus */
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 2px oklch(0.75 0.18 55 / 20%), 0 0 20px oklch(0.75 0.18 55 / 8%);
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading] {
+  opacity: 0;
+}
+img.loaded {
+  opacity: 1;
 }

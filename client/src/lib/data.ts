@@ -7,6 +7,16 @@ export const IMAGES = {
   turfNight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/turf_night_5526d0e2.jpg",
   turfFacility: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_turf_facility_3990d30d.jpg",
   turfCover: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/homeground_turf_cover_652592f6.jpeg",
+  // Badminton images
+  badmintonCourt: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_court_pro_4b80998d.jpg",
+  badmintonCourtGreen: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_court_green_c0d7d284.webp",
+  badmintonSmash: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_smash_action_28d77c72.jpg",
+  badmintonPlayer: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/badminton_player_action_6e32292b.jpg",
+  // Cricket coaching images
+  cricketTurfNight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_turf_night_bce5c184.jpg",
+  cricketNets: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_nets_practice_19aaa38a.jpg",
+  cricketCoaching: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_coaching_session_c2b8a33f.jpg",
+  cricketDrive: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_coaching_drive_4fc8d51d.jpg",
 };
 
 // Free Pexels video URLs for hero backgrounds

@@ -54,3 +54,18 @@
 - [x] Add dynamic text reveal animations
 - [x] Add floating sports elements and energy particles
 - [x] Make hero feel authentically sporty and premium
+
+## Academy Page Redesign & Animation Enhancements (v4)
+- [x] Scrape real badminton court images from BookMyPlayer reference
+- [x] Scrape real badminton images from Instagram/Facebook
+- [x] Find high-quality badminton action images from Pexels
+- [x] Upload all collected images to CDN
+- [x] Redesign badminton academy section with hero image, gallery, and animations
+- [x] Redesign cricket academy section with hero image, gallery, and animations
+- [x] Add animated section transitions and scroll-triggered effects to AcademyPage
+- [x] Enhance BookingPage with more animations and visual effects
+- [x] Add more micro-interactions and hover effects across the overall site
+- [x] Verify all pages render correctly and tests pass (27/27 passing)
+
+## Bug Fixes
+- [x] Fix garbled/overlapping marquee social proof bar text

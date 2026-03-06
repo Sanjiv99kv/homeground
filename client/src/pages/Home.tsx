@@ -321,18 +321,21 @@ function SocialProofBar() {
     { icon: Target, text: "4 Sports Under One Roof", color: "text-primary" },
   ];
 
+  const renderItems = (keyPrefix: string) =>
+    items.map((item, i) => (
+      <div key={`${keyPrefix}-${i}`} className="flex items-center gap-3 shrink-0 px-6">
+        <item.icon className={`h-4 w-4 ${item.color} shrink-0`} />
+        <span className="text-sm font-sans font-medium text-foreground/80 whitespace-nowrap">{item.text}</span>
+        <span className="text-primary/30 ml-6">◆</span>
+      </div>
+    ));
+
   return (
-    <section className="relative border-y border-primary/10 bg-card/40 backdrop-blur-md overflow-hidden py-5">
-      {/* Subtle gradient background */}
+    <section className="relative border-y border-primary/10 bg-card/40 backdrop-blur-md overflow-hidden py-4">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-hg-blue/3" />
       <div className="marquee-track">
-        {[...items, ...items].map((item, i) => (
-          <div key={i} className="flex items-center gap-2.5 px-8 whitespace-nowrap">
-            <item.icon className={`h-4 w-4 ${item.color} shrink-0`} />
-            <span className="text-sm font-sans font-medium text-foreground/80">{item.text}</span>
-            <span className="text-primary/20 mx-4">◆</span>
-          </div>
-        ))}
+        {renderItems('a')}
+        {renderItems('b')}
       </div>
     </section>
   );

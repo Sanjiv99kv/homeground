@@ -6,14 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
-import { SPORTS } from "@/lib/data";
+import { SPORTS, IMAGES } from "@/lib/data";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { useState, useMemo, useEffect } from "react";
 import { toast } from "sonner";
 import { useLocation, useSearch } from "wouter";
-import { ArrowLeft, Check, Clock, MapPin, ChevronRight, Loader2 } from "lucide-react";
+import { ArrowLeft, Check, Clock, MapPin, ChevronRight, Loader2, Zap, ArrowRight, Shield, CreditCard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { format, addDays, isWeekend } from "date-fns";
 
@@ -61,7 +61,6 @@ export default function BookingPage() {
   const createBooking = trpc.booking.create.useMutation({
     onSuccess: (data) => {
       toast.success("Booking created! Redirecting to payment...");
-      // In production, redirect to Razorpay. For now, confirm directly.
       confirmPayment.mutate({ bookingId: data.bookingId, paymentId: `sim_${Date.now()}` });
     },
     onError: (err) => toast.error(err.message || "Failed to create booking"),
@@ -138,49 +137,91 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <div className="pt-20 pb-12">
+
+      {/* Background accents */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[180px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-hg-blue/5 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="relative z-10 pt-24 pb-16">
         <div className="container max-w-4xl">
-          {/* Progress */}
-          <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
+          {/* Page Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <span className="inline-block text-sm font-sans font-semibold text-primary uppercase tracking-[0.2em] mb-2">Booking</span>
+            <h1 className="font-heading text-3xl sm:text-4xl tracking-wider mb-2">BOOK YOUR TURF</h1>
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-hg-blue rounded-full" />
+          </motion.div>
+
+          {/* Progress Steps */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center gap-2 mb-10 overflow-x-auto pb-2"
+          >
             {steps.map((s, i) => (
               <div key={s.key} className="flex items-center shrink-0">
-                <button
+                <motion.button
+                  whileHover={i < currentStepIndex ? { scale: 1.05 } : {}}
+                  whileTap={i < currentStepIndex ? { scale: 0.95 } : {}}
                   onClick={() => { if (i < currentStepIndex) setStep(s.key); }}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-colors ${
-                    i < currentStepIndex ? "bg-primary/20 text-primary cursor-pointer" :
-                    i === currentStepIndex ? "bg-primary text-primary-foreground" :
-                    "bg-muted text-muted-foreground"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-sans font-medium transition-all duration-300 ${
+                    i < currentStepIndex ? "bg-primary/15 text-primary cursor-pointer hover:bg-primary/25 border border-primary/20" :
+                    i === currentStepIndex ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" :
+                    "bg-card/50 text-muted-foreground border border-border/30"
                   }`}
                 >
-                  {i < currentStepIndex ? <Check className="h-3 w-3" /> : <span className="w-4 text-center text-xs">{i + 1}</span>}
+                  {i < currentStepIndex ? <Check className="h-3.5 w-3.5" /> : <span className="w-5 text-center text-xs">{i + 1}</span>}
                   <span>{s.label}</span>
-                </button>
-                {i < steps.length - 1 && <ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />}
+                </motion.button>
+                {i < steps.length - 1 && (
+                  <div className={`w-8 h-px mx-1 ${i < currentStepIndex ? 'bg-primary/40' : 'bg-border/30'}`} />
+                )}
               </div>
             ))}
-          </div>
+          </motion.div>
 
           <AnimatePresence mode="wait">
             {/* Step 1: Sport Selection */}
             {step === "sport" && (
-              <motion.div key="sport" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                <h2 className="font-heading text-2xl font-bold mb-6">Select Your Sport</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {SPORTS.map(sport => (
-                    <Card
+              <motion.div key="sport" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}>
+                <h2 className="font-heading text-2xl tracking-wider mb-6">SELECT YOUR SPORT</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {SPORTS.map((sport, i) => (
+                    <motion.div
                       key={sport.id}
-                      className={`cursor-pointer border border-border/50 hover:border-primary/50 transition-all`}
-                      style={{ background: sport.bgGlow }}
-                      onClick={() => handleSportSelect(sport.id)}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.08 }}
                     >
-                      <CardContent className="p-6 flex items-center gap-4">
-                        <span className="text-4xl">{sport.icon}</span>
-                        <div>
-                          <h3 className="font-heading font-semibold">{sport.name}</h3>
-                          <p className="text-sm text-muted-foreground">From ₹{sport.priceFrom}/hr</p>
+                      <div
+                        className="glass-card rounded-2xl p-6 cursor-pointer group hover:border-primary/40 transition-all duration-500 relative overflow-hidden"
+                        onClick={() => handleSportSelect(sport.id)}
+                      >
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{ background: sport.bgGlow }}
+                        />
+                        <div className="relative z-10 flex items-center gap-5">
+                          <motion.span
+                            whileHover={{ scale: 1.2, rotate: 10 }}
+                            className="text-5xl"
+                          >
+                            {sport.icon}
+                          </motion.span>
+                          <div className="flex-1">
+                            <h3 className="font-heading text-xl tracking-wider text-foreground">{sport.name.toUpperCase()}</h3>
+                            <p className="text-sm font-sans text-muted-foreground mt-1">From ₹{sport.priceFrom}/hr</p>
+                          </div>
+                          <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
@@ -188,45 +229,54 @@ export default function BookingPage() {
 
             {/* Step 2: Court Selection */}
             {step === "court" && (
-              <motion.div key="court" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+              <motion.div key="court" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" size="sm" onClick={() => setStep("sport")}>
+                  <Button variant="ghost" size="sm" onClick={() => setStep("sport")} className="rounded-xl">
                     <ArrowLeft className="h-4 w-4 mr-1" /> Back
                   </Button>
-                  <h2 className="font-heading text-2xl font-bold">
-                    {sportInfo?.icon} Select {sportInfo?.name} Court
+                  <h2 className="font-heading text-2xl tracking-wider">
+                    {sportInfo?.icon} SELECT {sportInfo?.name.toUpperCase()} COURT
                   </h2>
                 </div>
                 {courtsQuery.isLoading ? (
-                  <div className="flex justify-center py-12"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+                  <div className="flex justify-center py-16">
+                    <div className="flex flex-col items-center gap-3">
+                      <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                      <span className="text-sm font-sans text-muted-foreground">Loading courts...</span>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="grid grid-cols-1 gap-4">
-                    {courtsQuery.data?.map(court => (
-                      <Card
+                  <div className="grid grid-cols-1 gap-5">
+                    {courtsQuery.data?.map((court, i) => (
+                      <motion.div
                         key={court.id}
-                        className="cursor-pointer border hover:border-primary/50 transition-all"
-                        onClick={() => handleCourtSelect(court.id)}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
                       >
-                        <CardContent className="p-6">
+                        <div
+                          className="glass-card rounded-2xl p-6 cursor-pointer group hover:border-primary/40 transition-all duration-500"
+                          onClick={() => handleCourtSelect(court.id)}
+                        >
                           <div className="flex items-start justify-between">
-                            <div>
-                              <h3 className="font-heading font-semibold text-lg">{court.name}</h3>
-                              <p className="text-sm text-muted-foreground mt-1">{court.description}</p>
-                              <div className="flex flex-wrap gap-2 mt-3">
+                            <div className="flex-1">
+                              <h3 className="font-heading text-xl tracking-wider text-foreground group-hover:text-primary transition-colors">{court.name}</h3>
+                              <p className="text-sm font-sans text-muted-foreground mt-2 leading-relaxed">{court.description}</p>
+                              <div className="flex flex-wrap gap-2 mt-4">
                                 {(court.amenities as string[] || []).map((a: string) => (
-                                  <Badge key={a} variant="secondary" className="text-xs">{a}</Badge>
+                                  <span key={a} className="text-xs font-sans px-3 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/15">{a}</span>
                                 ))}
                               </div>
                             </div>
-                            <div className="text-right shrink-0 ml-4">
-                              <p className="text-sm text-muted-foreground">Weekday</p>
-                              <p className="font-semibold text-primary">₹{court.weekdayPrice}</p>
-                              <p className="text-sm text-muted-foreground mt-1">Weekend</p>
-                              <p className="font-semibold text-primary">₹{court.weekendPrice}</p>
+                            <div className="text-right shrink-0 ml-6 glass-card rounded-xl p-4">
+                              <p className="text-xs font-sans text-muted-foreground uppercase tracking-wider">Weekday</p>
+                              <p className="font-heading text-xl text-primary tracking-wider">₹{court.weekdayPrice}</p>
+                              <p className="text-xs font-sans text-muted-foreground uppercase tracking-wider mt-2">Weekend</p>
+                              <p className="font-heading text-xl text-hg-red tracking-wider">₹{court.weekendPrice}</p>
                             </div>
                           </div>
-                        </CardContent>
-                      </Card>
+                        </div>
+                      </motion.div>
                     ))}
                   </div>
                 )}
@@ -235,74 +285,87 @@ export default function BookingPage() {
 
             {/* Step 3: Date Selection */}
             {step === "date" && (
-              <motion.div key="date" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+              <motion.div key="date" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" size="sm" onClick={() => setStep("court")}>
+                  <Button variant="ghost" size="sm" onClick={() => setStep("court")} className="rounded-xl">
                     <ArrowLeft className="h-4 w-4 mr-1" /> Back
                   </Button>
-                  <h2 className="font-heading text-2xl font-bold">Select Date</h2>
+                  <h2 className="font-heading text-2xl tracking-wider">SELECT DATE</h2>
                 </div>
-                <Card>
-                  <CardContent className="p-6 flex justify-center">
-                    <Calendar
-                      mode="single"
-                      selected={selectedDate}
-                      onSelect={handleDateSelect}
-                      disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0)) || date > addDays(new Date(), 30)}
-                      className="rounded-md"
-                    />
-                  </CardContent>
-                </Card>
+                <div className="glass-card rounded-2xl p-6 sm:p-8 flex justify-center">
+                  <Calendar
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={handleDateSelect}
+                    disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0)) || date > addDays(new Date(), 30)}
+                    className="rounded-xl"
+                  />
+                </div>
                 {selectedDate && (
-                  <p className="text-sm text-muted-foreground mt-3 text-center">
-                    {isWeekend(selectedDate) ? "Weekend pricing applies" : "Weekday pricing applies"} for {format(selectedDate, "EEEE, MMMM d, yyyy")}
-                  </p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-sm font-sans text-muted-foreground mt-4 text-center"
+                  >
+                    Selected: <span className="text-primary font-medium">{format(selectedDate, "EEEE, MMMM d, yyyy")}</span>
+                    {isWeekend(selectedDate) && <Badge variant="secondary" className="ml-2 text-xs">Weekend Pricing</Badge>}
+                  </motion.p>
                 )}
               </motion.div>
             )}
 
             {/* Step 4: Time Slot Selection */}
             {step === "slot" && (
-              <motion.div key="slot" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+              <motion.div key="slot" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" size="sm" onClick={() => setStep("date")}>
+                  <Button variant="ghost" size="sm" onClick={() => setStep("date")} className="rounded-xl">
                     <ArrowLeft className="h-4 w-4 mr-1" /> Back
                   </Button>
                   <div>
-                    <h2 className="font-heading text-2xl font-bold">Select Time Slot</h2>
-                    <p className="text-sm text-muted-foreground">{selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}</p>
+                    <h2 className="font-heading text-2xl tracking-wider">SELECT TIME SLOT</h2>
+                    <p className="text-sm font-sans text-muted-foreground">{selectedDate && format(selectedDate, "EEEE, MMMM d, yyyy")}</p>
                   </div>
                 </div>
                 {availabilityQuery.isLoading ? (
-                  <div className="flex justify-center py-12"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+                  <div className="flex justify-center py-16">
+                    <div className="flex flex-col items-center gap-3">
+                      <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                      <span className="text-sm font-sans text-muted-foreground">Loading availability...</span>
+                    </div>
+                  </div>
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    {availabilityQuery.data?.slots.map((slot) => (
-                      <button
+                    {availabilityQuery.data?.slots.map((slot, i) => (
+                      <motion.button
                         key={slot.startTime}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.03 }}
                         disabled={!slot.available}
                         onClick={() => handleSlotSelect(slot)}
-                        className={`p-4 rounded-xl border text-center transition-all ${
+                        whileHover={slot.available ? { scale: 1.03 } : {}}
+                        whileTap={slot.available ? { scale: 0.97 } : {}}
+                        className={`p-4 rounded-2xl border text-center transition-all duration-300 ${
                           !slot.available
-                            ? "border-border/30 bg-muted/30 text-muted-foreground/50 cursor-not-allowed"
+                            ? "border-border/20 bg-muted/20 text-muted-foreground/40 cursor-not-allowed"
                             : selectedSlot?.startTime === slot.startTime
-                            ? "border-primary bg-primary/20 text-primary"
-                            : "border-border hover:border-primary/50 bg-card"
+                            ? "border-primary bg-primary/15 text-primary shadow-lg shadow-primary/10"
+                            : "border-border/30 hover:border-primary/40 bg-card/50 glass-card"
                         }`}
                       >
-                        <div className="flex items-center justify-center gap-1 mb-1">
-                          <Clock className="h-3 w-3" />
-                          <span className="text-sm font-medium">{slot.startTime}</span>
+                        <div className="flex items-center justify-center gap-1.5 mb-1">
+                          <Clock className="h-3.5 w-3.5" />
+                          <span className="text-sm font-sans font-medium">{slot.startTime}</span>
                         </div>
-                        <span className="text-xs text-muted-foreground">{slot.startTime} - {slot.endTime}</span>
+                        <span className="text-xs font-sans text-muted-foreground">{slot.startTime} - {slot.endTime}</span>
                         <div className="mt-2">
                           {slot.available ? (
-                            <span className="text-sm font-semibold text-primary">₹{slot.price}</span>
+                            <span className="text-sm font-heading font-bold text-primary tracking-wider">₹{slot.price}</span>
                           ) : (
-                            <span className="text-xs text-destructive">Booked</span>
+                            <span className="text-xs font-sans text-destructive">Booked</span>
                           )}
                         </div>
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
                 )}
@@ -311,74 +374,86 @@ export default function BookingPage() {
 
             {/* Step 5: Details & Confirm */}
             {step === "details" && (
-              <motion.div key="details" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+              <motion.div key="details" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" size="sm" onClick={() => setStep("slot")}>
+                  <Button variant="ghost" size="sm" onClick={() => setStep("slot")} className="rounded-xl">
                     <ArrowLeft className="h-4 w-4 mr-1" /> Back
                   </Button>
-                  <h2 className="font-heading text-2xl font-bold">Confirm Booking</h2>
+                  <h2 className="font-heading text-2xl tracking-wider">CONFIRM BOOKING</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Summary */}
-                  <Card className="border-primary/30">
-                    <CardHeader>
-                      <CardTitle className="font-heading">Booking Summary</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Sport</span>
-                        <span className="font-medium">{sportInfo?.icon} {sportInfo?.name}</span>
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+                    <div className="glass-card rounded-2xl p-6 border-gradient">
+                      <div className="flex items-center gap-2 mb-6">
+                        <Shield className="h-5 w-5 text-primary" />
+                        <h3 className="font-heading text-lg tracking-wider">BOOKING SUMMARY</h3>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Court</span>
-                        <span className="font-medium">{selectedCourt?.name}</span>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-sans text-muted-foreground">Sport</span>
+                          <span className="font-sans font-medium">{sportInfo?.icon} {sportInfo?.name}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-sans text-muted-foreground">Court</span>
+                          <span className="font-sans font-medium">{selectedCourt?.name}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-sans text-muted-foreground">Date</span>
+                          <span className="font-sans font-medium">{selectedDate && format(selectedDate, "MMM d, yyyy")}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-sans text-muted-foreground">Time</span>
+                          <span className="font-sans font-medium">{selectedSlot?.startTime} - {selectedSlot?.endTime}</span>
+                        </div>
+                        <div className="border-t border-border/30 pt-4 flex justify-between items-center">
+                          <span className="font-heading text-lg tracking-wider">TOTAL</span>
+                          <span className="font-heading text-3xl tracking-wider text-primary">₹{selectedSlot?.price}</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Date</span>
-                        <span className="font-medium">{selectedDate && format(selectedDate, "MMM d, yyyy")}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Time</span>
-                        <span className="font-medium">{selectedSlot?.startTime} - {selectedSlot?.endTime}</span>
-                      </div>
-                      <div className="border-t border-border pt-4 flex justify-between">
-                        <span className="font-heading font-semibold">Total</span>
-                        <span className="font-heading font-bold text-xl text-primary">₹{selectedSlot?.price}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </motion.div>
 
                   {/* Contact Details */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="font-heading">Your Details</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <Input placeholder="Full Name" value={customerName} onChange={e => setCustomerName(e.target.value)} className="bg-background" />
-                      <Input placeholder="Phone Number" value={customerPhone} onChange={e => setCustomerPhone(e.target.value)} className="bg-background" />
-                      <Input placeholder="Email" type="email" value={customerEmail} onChange={e => setCustomerEmail(e.target.value)} className="bg-background" />
-                      <Input placeholder="Notes (optional)" value={notes} onChange={e => setNotes(e.target.value)} className="bg-background" />
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                    <div className="glass-card rounded-2xl p-6">
+                      <div className="flex items-center gap-2 mb-6">
+                        <CreditCard className="h-5 w-5 text-primary" />
+                        <h3 className="font-heading text-lg tracking-wider">YOUR DETAILS</h3>
+                      </div>
+                      <div className="space-y-4">
+                        <Input placeholder="Full Name" value={customerName} onChange={e => setCustomerName(e.target.value)} className="bg-card/50 border-border/50 h-12 rounded-xl font-sans focus:border-primary/50" />
+                        <Input placeholder="Phone Number" value={customerPhone} onChange={e => setCustomerPhone(e.target.value)} className="bg-card/50 border-border/50 h-12 rounded-xl font-sans focus:border-primary/50" />
+                        <Input placeholder="Email" type="email" value={customerEmail} onChange={e => setCustomerEmail(e.target.value)} className="bg-card/50 border-border/50 h-12 rounded-xl font-sans focus:border-primary/50" />
+                        <Input placeholder="Notes (optional)" value={notes} onChange={e => setNotes(e.target.value)} className="bg-card/50 border-border/50 h-12 rounded-xl font-sans focus:border-primary/50" />
 
-                      {!isAuthenticated ? (
-                        <Button className="w-full" onClick={() => { window.location.href = getLoginUrl(); }}>
-                          Sign In to Book
-                        </Button>
-                      ) : (
-                        <Button
-                          className="w-full bg-primary text-primary-foreground glow-primary font-sans font-semibold"
-                          onClick={handleBooking}
-                          disabled={createBooking.isPending || confirmPayment.isPending}
-                        >
-                          {createBooking.isPending || confirmPayment.isPending ? (
-                            <><Loader2 className="h-4 w-4 animate-spin mr-2" /> Processing...</>
-                          ) : (
-                            <>Pay ₹{selectedSlot?.price} & Confirm</>
-                          )}
-                        </Button>
-                      )}
-                    </CardContent>
-                  </Card>
+                        {!isAuthenticated ? (
+                          <Button className="w-full h-14 rounded-xl font-sans font-bold" onClick={() => { window.location.href = getLoginUrl(); }}>
+                            Sign In to Book
+                          </Button>
+                        ) : (
+                          <Button
+                            className="w-full bg-primary text-primary-foreground glow-primary font-sans font-bold h-14 rounded-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
+                            onClick={handleBooking}
+                            disabled={createBooking.isPending || confirmPayment.isPending}
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                            <span className="relative flex items-center gap-2">
+                              {createBooking.isPending || confirmPayment.isPending ? (
+                                <><Loader2 className="h-4 w-4 animate-spin" /> Processing...</>
+                              ) : (
+                                <>
+                                  <Zap className="h-4 w-4" />
+                                  PAY ₹{selectedSlot?.price} & CONFIRM
+                                </>
+                              )}
+                            </span>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             )}
