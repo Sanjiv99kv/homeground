@@ -89,3 +89,10 @@
 
 ## Name Swap Fix (v8)
 - [x] Swap Sparsh Tangri and Rahul name positions in founders group photo overlay
+
+## Founder Photos & Name Fix (v9)
+- [x] Rename "Rahul" to "Rahul Tangri" everywhere in the codebase
+- [x] Upload Archana's individual photo to CDN
+- [x] Upload Rahul Tangri's individual photo to CDN
+- [x] Upload Sparsh Tangri's individual photo to CDN
+- [x] Assign photos to correct founder cards

@@ -24,6 +24,10 @@ export const IMAGES = {
   // Founders
   foundersGroup: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/founders_group_photo_48b81685.png",
   cricketDaylight: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/cricket_daylight_practice_f581de01.jpeg",
+  // Individual founder photos
+  archanaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/archana_tangri_photo_96052119.png",
+  rahulPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/rahul_tangri_photo_477dbb31.png",
+  sparshPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310519663374526873/QGLXtz8LbdZg3gRkE6by7h/sparsh_tangri_photo_0248a7b8.png",
 };
 
 // Free Pexels video URLs for hero backgrounds
@@ -41,9 +45,9 @@ export const WHATSAPP_URL = WHATSAPP_NUMBER
 
 export const FOUNDERS = [
   {
-    name: "Rahul",
+    name: "Rahul Tangri",
     role: "Co-Founder & Digital Architect",
-    image: null,
+    image: IMAGES.rahulPhoto,
     bio: "The digital heartbeat of HomeGround. Rahul bridges the gap between grassroots sport and cutting-edge technology, building the platforms that let hundreds of players book, train, and compete every week. From the seamless booking engine to the social media presence that has made HomeGround go viral in Kandivali, Rahul ensures the brand lives as powerfully online as it does on the turf. His tech-first mindset keeps HomeGround ahead of every competitor.",
     highlights: ["Tech Innovation", "Platform Engineering", "Digital Strategy", "Social Media"],
     color: "hg-blue",
@@ -51,7 +55,7 @@ export const FOUNDERS = [
   {
     name: "Archana Tangri",
     role: "Co-Founder & Business Strategist",
-    image: null,
+    image: IMAGES.archanaPhoto,
     bio: "The quiet force behind HomeGround's rapid ascent. Archana brings a rare combination of sharp financial acumen and deep empathy for the sporting community. She oversees the business strategy, financial planning, and the academy partnerships that have made HomeGround a household name. Her ability to see opportunity where others see obstacles has been instrumental in scaling from a neighbourhood turf to a multi-sport empire with two professional academies.",
     highlights: ["Financial Strategy", "Academy Partnerships", "Brand Building", "Growth Architecture"],
     color: "hg-red",
@@ -59,7 +63,7 @@ export const FOUNDERS = [
   {
     name: "Sparsh Tangri",
     role: "Co-Founder & Visionary",
-    image: null,
+    image: IMAGES.sparshPhoto,
     bio: "A born entrepreneur with an unwavering belief that sport transforms lives. Sparsh envisioned HomeGround not as a business, but as a movement — a place where every child in Kandivali could access world-class facilities without travelling across Mumbai. He architects the operations, forges partnerships, and ensures that every square foot of turf delivers a premium experience. His relentless pursuit of excellence has turned a single cricket pitch into Mumbai's most talked-about multi-sport destination.",
     highlights: ["Strategic Vision", "Operations Excellence", "Community Builder", "Business Growth"],
     color: "hg-lime",
@@ -155,7 +159,7 @@ export const ORIGIN_STORY = {
   subtitle: "Our Story",
   paragraphs: [
     "HomeGround was born from a simple belief — every athlete deserves a world-class playing surface, right in their neighbourhood. In the heart of Kandivali East, Mumbai, we set out to build more than just a turf. We built a community.",
-    "Co-founded by IPL cricketer Paul Valthaty, alongside Sparsh Tangri, Archana Tangri, and Rahul, HomeGround started as a single cricket turf and grew into a multi-sport destination offering cricket, football, badminton, and box cricket facilities.",
+    "Co-founded by IPL cricketer Paul Valthaty, alongside Sparsh Tangri, Archana Tangri, and Rahul Tangri, HomeGround started as a single cricket turf and grew into a multi-sport destination offering cricket, football, badminton, and box cricket facilities.",
     "With the launch of the Paul Valthaty Cricket Academy and the Home Shuttlers Badminton Academy, HomeGround became a place where casual players and serious athletes alike could train, compete, and grow — all under one roof.",
     "Today, HomeGround is Kandivali's go-to sports hub, serving hundreds of players every week. Whether you're booking a turf for a weekend match or enrolling your child in professional coaching, HomeGround is where your game begins.",
   ],

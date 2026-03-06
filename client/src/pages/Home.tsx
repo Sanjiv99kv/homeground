@@ -563,7 +563,7 @@ function FoundersSection() {
             <div className="relative rounded-3xl overflow-hidden">
               <img
                 src={IMAGES.foundersGroup}
-                alt="Sparsh Tangri, Archana Tangri, and Rahul — Co-Founders of HomeGround"
+                alt="Sparsh Tangri, Archana Tangri, and Rahul Tangri — Co-Founders of HomeGround"
                 className="w-full h-[350px] sm:h-[450px] md:h-[550px] object-cover object-top group-hover:scale-[1.02] transition-transform duration-700"
               />
               {/* Gradient overlay at bottom */}
@@ -612,11 +612,15 @@ function FoundersSection() {
                     className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden"
                     style={{ background: `linear-gradient(135deg, ${accentColor}, color-mix(in oklch, ${accentColor} 60%, oklch(0.2 0 0)))` }}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-heading text-5xl sm:text-6xl tracking-wider text-white/90 drop-shadow-lg">
-                        {founder.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
+                    {founder.image ? (
+                      <img src={founder.image} alt={founder.name} className="absolute inset-0 w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-heading text-5xl sm:text-6xl tracking-wider text-white/90 drop-shadow-lg">
+                          {founder.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
                     {/* Shimmer effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </motion.div>
