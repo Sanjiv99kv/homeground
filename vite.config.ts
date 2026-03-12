@@ -179,9 +179,6 @@ export default defineConfig({
       "localhost",
       "127.0.0.1",
     ],
-    proxy: {
-      "/api": "http://localhost:3000",
-    },
     fs: {
       strict: true,
       deny: ["**/.*"],
