@@ -685,8 +685,11 @@ function FoundersSection() {
                   <h3 className="font-heading text-3xl sm:text-4xl tracking-wider text-foreground mb-4">
                     {founder.name.toUpperCase()}
                   </h3>
-                  <p className="text-base font-sans text-muted-foreground leading-relaxed mb-6">
-                    {founder.bio}
+                  <p className={`text-base font-sans text-muted-foreground leading-relaxed mb-6
+                    ${isEven ? 'flex justify-start' : 'flex justify-end'}`}>
+                    <span className="max-w-2xl">
+                      {founder.bio}
+                    </span>
                   </p>
                   <div className={`flex flex-wrap gap-2 ${isEven ? 'md:justify-start' : 'md:justify-end'} justify-center`}>
                     {founder.highlights.map(h => (
