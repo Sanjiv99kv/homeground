@@ -285,23 +285,6 @@ function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator with bounce */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs font-sans text-muted-foreground uppercase tracking-widest">Scroll</span>
-        <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex justify-center pt-2">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 rounded-full bg-primary"
-          />
-        </div>
-      </motion.div>
-
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[3]" />
     </section>
@@ -430,6 +413,8 @@ function SportsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -4 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div
               role="button"
@@ -438,16 +423,28 @@ function SportsSection() {
               onKeyDown={(e) => e.key === "Enter" && setLocation("/academy/cricket")}
               className="group relative rounded-2xl overflow-hidden cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-hg-orange/15 to-transparent" />
-              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-orange/20 hover:border-hg-orange/40 transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-hg-orange/15 to-transparent group-hover:from-hg-orange/25 transition-all duration-500" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none overflow-hidden rounded-2xl">
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              </div>
+              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-orange/20 hover:border-hg-orange/40 hover:shadow-[0_0_30px_-5px] hover:shadow-hg-orange/20 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 ring-2 ring-transparent group-hover:ring-hg-orange/40 transition-all duration-300">
                   <img src={IMAGES.paulCoaching} alt="Paul Valthaty" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-heading text-xl tracking-wider text-foreground">PAUL VALTHATY CRICKET ACADEMY</h3>
                   <p className="text-sm font-sans text-primary">Train with an IPL legend</p>
+                  <span className="inline-flex items-center gap-1 mt-1.5 text-xs font-medium text-hg-orange/70 group-hover:text-hg-orange transition-colors duration-300">
+                    Explore Academy <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
                 </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="shrink-0 p-3 bg-hg-orange/10 rounded-full group-hover:bg-hg-orange/20 transition-all duration-300"
+                >
+                  <ChevronRight className="h-6 w-6 text-hg-orange/50 group-hover:text-primary transition-colors" />
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -456,6 +453,8 @@ function SportsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -4 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div
               role="button"
@@ -464,16 +463,28 @@ function SportsSection() {
               onKeyDown={(e) => e.key === "Enter" && setLocation("/academy/badminton")}
               className="group relative rounded-2xl overflow-hidden cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-hg-lime/15 to-transparent" />
-              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-lime/20 hover:border-hg-lime/40 transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-hg-lime/30">
+              <div className="absolute inset-0 bg-gradient-to-r from-hg-lime/15 to-transparent group-hover:from-hg-lime/25 transition-all duration-500" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none overflow-hidden rounded-2xl">
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              </div>
+              <div className="glass-card rounded-2xl p-6 flex items-center gap-5 border border-hg-lime/20 hover:border-hg-lime/40 hover:shadow-[0_0_30px_-5px] hover:shadow-hg-lime/20 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-hg-lime/30 ring-2 ring-transparent group-hover:ring-hg-lime/40 transition-all duration-300">
                   <img src={IMAGES.badmintonCoachTeam} alt="Home Shuttlers Coaching Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-heading text-xl tracking-wider text-foreground">HOME SHUTTLERS BADMINTON ACADEMY</h3>
                   <p className="text-sm font-sans text-hg-lime">Smash your limits</p>
+                  <span className="inline-flex items-center gap-1 mt-1.5 text-xs font-medium text-hg-lime/70 group-hover:text-hg-lime transition-colors duration-300">
+                    Explore Academy <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
                 </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-hg-lime group-hover:translate-x-1 transition-all shrink-0" />
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="shrink-0 p-3 bg-hg-lime/10 rounded-full group-hover:bg-hg-lime/20 transition-all duration-300"
+                >
+                  <ChevronRight className="h-6 w-6 text-hg-lime/50 group-hover:text-hg-lime transition-colors" />
+                </motion.div>
               </div>
             </div>
           </motion.div>
