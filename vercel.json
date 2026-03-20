@@ -1,8 +1,13 @@
 {
-  "buildCommand": "vite build && esbuild api/index.ts --platform=node --packages=external --bundle --format=esm --outfile=api/_handler.mjs",
+  "buildCommand": "vite build",
   "outputDirectory": "dist/public",
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "server/**/*.ts,shared/**/*.ts,drizzle/**/*.ts"
+    }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/_handler.mjs" },
+    { "source": "/api/(.*)", "destination": "/api" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
