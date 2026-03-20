@@ -1,8 +1,8 @@
 {
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && esbuild api/index.ts --platform=node --packages=external --bundle --format=esm --outfile=api/_handler.mjs",
   "outputDirectory": "dist/public",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/api/(.*)", "destination": "/api/_handler.mjs" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
