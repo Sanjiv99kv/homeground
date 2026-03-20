@@ -108,16 +108,16 @@ export const SPORTS = [
     priceFrom: 400,
   },
   {
-    id: "box_cricket",
-    name: "Box Cricket",
-    icon: "🥊",
+    id: "pickleball",
+    name: "Pickleball",
+    icon: "🏓",
     gradient: "from-[oklch(0.6_0.22_25)] to-[oklch(0.5_0.2_15)]",
     bgGlow: "oklch(0.6 0.22 25 / 15%)",
     accentColor: "oklch(0.6 0.22 25)",
     accentGlow: "oklch(0.6 0.22 25 / 35%)",
     accentBorder: "oklch(0.6 0.22 25 / 40%)",
-    description: "Enclosed box cricket arena for quick matches and corporate events",
-    priceFrom: 1500,
+    description: "Professional pickleball courts with top-quality nets for singles, doubles, and casual games",
+    priceFrom: 800,
   },
 ];
 

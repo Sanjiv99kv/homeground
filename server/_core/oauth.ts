@@ -2,6 +2,7 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
+import { ENV } from "./env";
 import { sdk } from "./sdk";
 
 function getQueryParam(req: Request, key: string): string | undefined {
@@ -48,6 +49,49 @@ export function registerOAuthRoutes(app: Express) {
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });
+    }
+  });
+
+  // Dev login — only available when OAuth is not configured (local/dev mode)
+  app.post("/api/dev-login", async (req: Request, res: Response) => {
+    // Block dev login in production when OAuth is properly configured
+    if (ENV.isProduction && ENV.oAuthServerUrl) {
+      res.status(403).json({ error: "Dev login is disabled in production" });
+      return;
+    }
+
+    try {
+      const { name, email } = req.body;
+
+      if (!name || !email) {
+        res.status(400).json({ error: "Name and email are required" });
+        return;
+      }
+
+      // Create a stable openId from email
+      const openId = `dev_${Buffer.from(email).toString("base64url")}`;
+
+      // Upsert user in database (falls through gracefully if no DB)
+      await db.upsertUser({
+        openId,
+        name,
+        email,
+        loginMethod: "dev",
+        lastSignedIn: new Date(),
+      });
+
+      const sessionToken = await sdk.createSessionToken(openId, {
+        name,
+        expiresInMs: ONE_YEAR_MS,
+      });
+
+      const cookieOptions = getSessionCookieOptions(req);
+      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+
+      res.json({ success: true, user: { name, email, openId } });
+    } catch (error) {
+      console.error("[DevLogin] Failed", error);
+      res.status(500).json({ error: "Dev login failed" });
     }
   });
 }

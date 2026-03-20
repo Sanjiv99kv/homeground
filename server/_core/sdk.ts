@@ -270,8 +270,25 @@ class SDKServer {
     const signedInAt = new Date();
     let user = await db.getUserByOpenId(sessionUserId);
 
-    // If user not in DB, sync from OAuth server automatically
+    // If user not in DB, try to sync or create from session data
     if (!user) {
+      // For dev logins (openId starts with "dev_") or when DB is unavailable,
+      // create a synthetic user from the JWT session payload
+      if (sessionUserId.startsWith("dev_")) {
+        return {
+          id: 1,
+          openId: sessionUserId,
+          name: session.name || "Dev User",
+          email: null,
+          phone: null,
+          loginMethod: "dev",
+          role: "user",
+          createdAt: signedInAt,
+          updatedAt: signedInAt,
+          lastSignedIn: signedInAt,
+        } as User;
+      }
+
       try {
         const userInfo = await this.getUserInfoWithJwt(sessionCookie ?? "");
         await db.upsertUser({

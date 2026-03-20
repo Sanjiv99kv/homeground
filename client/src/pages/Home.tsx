@@ -214,7 +214,7 @@ function HeroSection() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-lg sm:text-xl md:text-2xl font-sans text-foreground/70 mb-12 max-w-2xl leading-relaxed"
           >
-            Cricket • Football • Badminton • Box Cricket — all under one roof.{" "}
+            Cricket • Football • Badminton • Pickleball — all under one roof.{" "}
             <br className="hidden sm:block" />
             Coached by IPL legend <span className="text-primary font-bold">Paul Valthaty</span>.
           </motion.p>
@@ -631,14 +631,14 @@ function FoundersSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
+                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-14`}
               >
                 {/* Left: Large initial + accent */}
                 <div className="flex-shrink-0 relative">
                   <motion.div
                     whileHover={{ scale: 1.05, rotate: isEven ? 3 : -3 }}
                     transition={{ type: 'spring', stiffness: 200 }}
-                    className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden"
+                    className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-3xl overflow-hidden"
                     style={{ background: `linear-gradient(135deg, ${accentColor}, color-mix(in oklch, ${accentColor} 60%, oklch(0.2 0 0)))` }}
                   >
                     {founder.image ? (
@@ -661,18 +661,20 @@ function FoundersSection() {
                 </div>
 
                 {/* Right: Content */}
-                <div className={`flex-1 ${isEven ? 'md:text-left' : 'md:text-right'} text-center`}>
-                  <div className="inline-flex items-center gap-2 mb-3">
-                    <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
-                    <span className="text-xs font-sans font-semibold uppercase tracking-[0.15em]" style={{ color: accentColor }}>
-                      {founder.role}
-                    </span>
-                    <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+                <div className={`flex-1 min-w-0 ${isEven ? 'md:text-left' : 'md:text-right'} text-center`}>
+                  <div className={`flex ${isEven ? 'md:justify-start' : 'md:justify-end'} justify-center mb-3`}>
+                    <div className="inline-flex items-center gap-2">
+                      <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+                      <span className="text-xs font-sans font-semibold uppercase tracking-[0.15em]" style={{ color: accentColor }}>
+                        {founder.role}
+                      </span>
+                      <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+                    </div>
                   </div>
                   <h3 className="font-heading text-3xl sm:text-4xl tracking-wider text-foreground mb-4">
                     {founder.name.toUpperCase()}
                   </h3>
-                  <p className="text-base font-sans text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                  <p className="text-base font-sans text-muted-foreground leading-relaxed mb-6">
                     {founder.bio}
                   </p>
                   <div className={`flex flex-wrap gap-2 ${isEven ? 'md:justify-start' : 'md:justify-end'} justify-center`}>

@@ -29,7 +29,7 @@ const sportIcons: Record<string, string> = {
   cricket: "🏏",
   football: "⚽",
   badminton: "🏸",
-  box_cricket: "🏏",
+  pickleball: "🏓",
 };
 
 export default function MyBookings() {
@@ -149,7 +149,7 @@ export default function MyBookings() {
                         <div className="space-y-2">
                           <div className="flex items-center gap-2 flex-wrap">
                             <h3 className="font-heading text-lg tracking-wider">
-                              {booking.sport === "box_cricket" ? "BOX CRICKET" : booking.sport.toUpperCase()}
+                              {booking.sport.toUpperCase()}
                             </h3>
                             <Badge className={`${statusColors[booking.status]} text-xs font-sans`}>{booking.status}</Badge>
                             <Badge className={`${paymentColors[booking.paymentStatus]} text-xs font-sans`}>{booking.paymentStatus}</Badge>

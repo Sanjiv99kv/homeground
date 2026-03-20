@@ -429,7 +429,17 @@ export default function BookingPage() {
                         <Input placeholder="Notes (optional)" value={notes} onChange={e => setNotes(e.target.value)} className="bg-card/50 border-border/50 h-12 rounded-xl font-sans focus:border-primary/50" />
 
                         {!isAuthenticated ? (
-                          <Button className="w-full h-14 rounded-xl font-sans font-bold" onClick={() => { window.location.href = getLoginUrl(); }}>
+                          <Button className="w-full h-14 rounded-xl font-sans font-bold" onClick={() => {
+                            const loginUrl = getLoginUrl();
+                            if (loginUrl === "#") {
+                              // Trigger the navbar sign-in modal by clicking the Sign In button
+                              const signInBtn = document.querySelector<HTMLButtonElement>('[data-signin-trigger]');
+                              if (signInBtn) signInBtn.click();
+                              else window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                              window.location.href = loginUrl;
+                            }
+                          }}>
                             Sign In to Book
                           </Button>
                         ) : (

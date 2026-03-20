@@ -67,7 +67,7 @@ export const appRouter = router({
     }),
     create: protectedProcedure.input(z.object({
       courtId: z.number(),
-      sport: z.enum(["cricket", "football", "badminton", "box_cricket"]),
+      sport: z.enum(["cricket", "football", "badminton", "pickleball"]),
       date: z.string(),
       startTime: z.string(),
       endTime: z.string(),

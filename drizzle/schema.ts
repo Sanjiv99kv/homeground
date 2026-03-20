@@ -19,7 +19,7 @@ export type InsertUser = typeof users.$inferInsert;
 export const courts = mysqlTable("courts", {
   id: int("id").autoincrement().primaryKey(),
   name: varchar("name", { length: 200 }).notNull(),
-  sport: mysqlEnum("sport", ["cricket", "football", "badminton", "box_cricket"]).notNull(),
+  sport: mysqlEnum("sport", ["cricket", "football", "badminton", "pickleball"]).notNull(),
   description: text("description"),
   weekdayPrice: int("weekdayPrice").notNull().default(1800),
   weekendPrice: int("weekendPrice").notNull().default(2000),
@@ -40,7 +40,7 @@ export const bookings = mysqlTable("bookings", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull(),
   courtId: int("courtId").notNull(),
-  sport: mysqlEnum("sport", ["cricket", "football", "badminton", "box_cricket"]).notNull(),
+  sport: mysqlEnum("sport", ["cricket", "football", "badminton", "pickleball"]).notNull(),
   date: varchar("date", { length: 10 }).notNull(),
   startTime: varchar("startTime", { length: 5 }).notNull(),
   endTime: varchar("endTime", { length: 5 }).notNull(),
